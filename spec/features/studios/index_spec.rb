@@ -7,7 +7,7 @@ RSpec.describe 'Studio index page' do
   end
 
   it "shows all the studios and thier informaiton " do
-    visit "/studio"
+    visit "/studios"
 
     expect(page).to have_content(@studio_1.name)
     expect(page).to have_content(@studio_1.location)
