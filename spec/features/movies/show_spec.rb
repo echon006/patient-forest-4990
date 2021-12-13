@@ -12,13 +12,10 @@ RSpec.describe 'Movies show page' do
   end
 
   it "shows all the movies and their information" do
-    visit "/movies"
+    visit "/movies/#{@movie_1.id}"
 
     expect(page).to have_content(@movie_1.title)
     expect(page).to have_content(@movie_1.creation_year)
     expect(page).to have_content(@movie_1.genre)
-    expect(page).to have_content(@movie_4.title)
-    expect(page).to have_content(@movie_4.creation_year)
-    expect(page).to have_content(@movie_4.genre)
   end
 end
