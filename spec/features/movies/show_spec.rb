@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Studio index page' do
+RSpec.describe 'Movies show page' do
   before :each do
     @studio_1 = Studio.create(name: "Studio 1", location: "Denver")
     @studio_2 = Studio.create(name: "Studio 2", location: "Aurora")
@@ -11,21 +11,14 @@ RSpec.describe 'Studio index page' do
     @movie_4 = @studio_2.movies.create(title: "Movie 4", creation_year: 1993, genre: "Sci-Fi")
   end
 
-  it "shows all the studios and thier informaiton " do
-    visit "/studios"
-
-    expect(page).to have_content(@studio_1.name)
-    expect(page).to have_content(@studio_1.location)
-    expect(page).to have_content(@studio_2.name)
-    expect(page).to have_content(@studio_2.location)
-  end
-
-  it "shows all the movies that are related to the studio" do
-    visit "/studios"
+  it "shows all the movies and their information" do
+    visit "/movies"
 
     expect(page).to have_content(@movie_1.title)
-    expect(page).to have_content(@movie_2.title)
-    expect(page).to have_content(@movie_3.title)
+    expect(page).to have_content(@movie_1.creation_year)
+    expect(page).to have_content(@movie_1.genre)
     expect(page).to have_content(@movie_4.title)
+    expect(page).to have_content(@movie_4.creation_year)
+    expect(page).to have_content(@movie_4.genre)
   end
 end
